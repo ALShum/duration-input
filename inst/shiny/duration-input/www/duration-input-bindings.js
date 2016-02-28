@@ -37,7 +37,6 @@ $.extend(durationInputBinding, {
       var minVal = parseInt(min.val());
       var secVal = parseInt(sec.val());
       var totalSeconds = 3600 * hourVal + 60 * minVal + secVal;
-      //var step = el.hasOwnProperty('step') ? el.step : 1;
 
       if (hourVal < 0) {
         hour.val(0);

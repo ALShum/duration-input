@@ -9,6 +9,8 @@ durationInput <- function(inputId, label, value = list(hour = 0, min = 0, sec = 
     ),
 
     shiny::tags$div(id = inputId, class = "duration",
+      shiny::tags$label(label, `for` = inputId),
+      shiny::tags$br(),
       shiny::tags$input(class = "hour", type = "number", value = value$hour, style = style),
       shiny::tags$input(class = "minute", type = "number", value = value$min, style = style),
       shiny::tags$input(class = "second", type = "number", value = value$sec, style = style, step = if(!is.null(step)) step)
