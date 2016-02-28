@@ -17,7 +17,8 @@ $.extend(durationInputBinding, {
   },
 
   setValue: function(el, value) {
-    el.value = value;
+    //el.value = value;
+    //TODO
   },
 
   receiveMessage: function(el, data) {
