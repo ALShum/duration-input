@@ -1,4 +1,6 @@
-durationInput = function(inputId, label, hvalue = 0, mvalue = 0, svalue = 0) {
+durationInput <- function(inputId, label, value = list(hour = 1, min = 30, sec = 45), width="50px") {
+  style = ifelse(!is.null(width), paste0("width: ", shiny::validateCssUnit(width), ";") ,NULL)
+
   shiny::tagList(
     shiny::singleton(
       shiny::tags$head(
@@ -6,11 +8,11 @@ durationInput = function(inputId, label, hvalue = 0, mvalue = 0, svalue = 0) {
       )
     ),
 
-    shiny::div(
-      id = inputId, class = "durationInput",
-      tags$input(class="hour", value=hvalue),
-      tags$input(class="minute", value=mvalue),
-      tags$input(class="second", value=svalue)
+    
+    shiny::tags$div(id = inputId, class = "duration",
+      shiny::tags$input(class = "hour", type = "number", value = value$hour, style = style),
+      shiny::tags$input(class = "minute", type = "number", value = value$min, style = style),
+      shiny::tags$input(class = "second", type = "number", value = value$sec, style = style)
     )
   )
 }
