@@ -1,5 +1,5 @@
-var urlInputBinding = new Shiny.InputBinding();
-$.extend(urlInputBinding, {
+var durationInputBinding = new Shiny.InputBinding();
+$.extend(durationInputBinding, {
   find: function(scope) {
     return $(scope).find('.duration');
   },
@@ -21,7 +21,7 @@ $.extend(urlInputBinding, {
   },
 
   subscribe: function(el, callback) {
-    $(el).on('change.urlInputBinding', function(event) {
+    $(el).on('change.durationInputBinding', function(event) {
       var hour = $(el).find('.hour');
       var min = $(el).find('.minute');
       var sec = $(el).find('.second');
@@ -59,7 +59,7 @@ $.extend(urlInputBinding, {
   },
 
   unsubscribe: function(el) {
-    $(el).off('.urlInputBinding');
+    $(el).off('.durationInputBinding');
   }
 });
-Shiny.inputBindings.register(urlInputBinding, 'shiny.urlInput');
+Shiny.inputBindings.register(durationInputBinding, 'shiny.durationInput');
