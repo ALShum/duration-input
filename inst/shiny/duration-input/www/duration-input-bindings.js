@@ -1,7 +1,7 @@
 var durationInputBinding = new Shiny.InputBinding();
 $.extend(durationInputBinding, {
   find: function(scope) {
-    return $(scope).find('.duration');
+    return $(scope).find('.shiny-input-duration');
   },
 
   getId: function(el) {
@@ -43,23 +43,11 @@ $.extend(durationInputBinding, {
         hour.val(0);
       }
 
-      if (minVal < 0) {
-        min.val(Math.floor(totalSeconds % 3600 / 60));
-        hour.val(Math.floor(totalSeconds / 3600));
-      } else if (minVal >= 60) {
-        min.val(Math.floor(totalSeconds % 3600 / 60));
-        hour.val(Math.floor(totalSeconds / 3600));
-      }
-
-      if (secVal < 0) {
+      if (minVal < 0 || minVal >= 60 || secVal < 0 || secVal >= 60) {
         totalSeconds = Math.max(totalSeconds, 0)
-        sec.val(totalSeconds % 3600 % 60 );
-        min.val(Math.floor(totalSeconds % 3600 / 60));
-        hour.val(Math.floor(totalSeconds / 3600));
-      } else if (secVal >= 60) {
-        min.val(Math.floor(totalSeconds % 3600 / 60));
-        hour.val(Math.floor(totalSeconds / 3600));
         sec.val(totalSeconds % 3600 % 60);
+        min.val(Math.floor(totalSeconds % 3600 / 60));
+        hour.val(Math.floor(totalSeconds / 3600));
       }
 
       callback();
